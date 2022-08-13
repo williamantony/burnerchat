@@ -7,18 +7,6 @@ const store = configureStore({
   middleware: [ReduxThunk],
 });
 
+console.log(store.getState());
+
 export default store;
-
-// import { applyMiddleware, createStore } from "redux";
-// import ReduxThunk from "redux-thunk";
-// import { composeWithDevTools } from "remote-redux-devtools";
-// import Reducers from "./reducers";
-
-// const store = createStore(
-//   Reducers,
-//   composeWithDevTools({ realtime: true, port: 8081 })(
-//     applyMiddleware(ReduxThunk)
-//   )
-// );
-
-// export default store;
