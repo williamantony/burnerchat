@@ -1,6 +1,8 @@
 import { View, Text, TouchableOpacity, Button } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import MainStyles from "../styles/main.styles";
+import { useState } from "react";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -17,13 +19,34 @@ const SettingsView = function (props) {
   );
 };
 
+const PopupMenu = function (props) {
+  const [isPopupVisible, setPopupVisibility] = useState(false);
+
+  const togglePopup = (e) => {
+    setPopupVisibility(!isPopupVisible);
+  };
+
+  return (
+    <View>
+      <TouchableOpacity onPress={togglePopup}>
+        <Ionicons name="ellipsis-vertical" size={25} color="#000" />
+      </TouchableOpacity>
+      <View style={{ display: isPopupVisible ? "block" : "none" }}>
+        POPUP MENU
+      </View>
+    </View>
+  );
+};
+
 const ChatListView = function (props) {
   const goToChatView = (e) => {
+    alert("Test");
     props.navigation.push("ChatView");
   };
 
   return (
     <View style={MainStyles.container}>
+      <PopupMenu />
       <Text>Chat List View</Text>
       <Button title="Button" onPress={goToChatView}></Button>
     </View>
